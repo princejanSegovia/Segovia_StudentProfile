@@ -1,4 +1,3 @@
 # Student Profile
 
-![Profile Avatar](Profile_Avatar.jpg)
-
+![Student Profile](Segovia_Profile%20ScreenShot.png)
