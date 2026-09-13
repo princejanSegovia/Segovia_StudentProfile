@@ -1,10 +1,8 @@
 <DOCTYPE html>
-
     <html lang="en">
-
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Segovia Profile</title>
+        <title>Segovia Contacts</title>
         <style>
             header {
                 background-color: #D3D3D3;
@@ -17,50 +15,7 @@
                 flex-direction: column;
             }
 
-            h1 {
-                font-size: 36px;
-                color: #333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                margin-bottom: 5px;
-                font-weight: bold;
-                padding-top: 10px;
-            }
-
-            h2 {
-                font-size: 30px;
-                color: #333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                font-weight: bold;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            h3 {
-                font-size: 30px;
-                color: #333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                font-weight: bold;
-            }
-
-            .my-box {
-                width: 80%;
-                height: auto;
-                min-height: 200px;
-                background-color: aliceblue;
-                border: 2px solid;
-                padding-left: 5%;
-                padding-right: 5%;
-                padding-bottom: 5%;
-                padding-top: 1%;
-                margin: 20px auto;
-                border-radius: 30px;
-                text-align: justify;
-            }
-
-            .big-text {
+             .big-text {
                 font-size: 22px;
             }
 
@@ -70,15 +25,6 @@
 
             .text-bottom-pad {
                 padding-bottom: 5%;
-            }
-
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin-bottom: 15px;
-                border: 3px solid white;
             }
 
             .center-text {
@@ -110,7 +56,7 @@
                 width: 250px;
                 position: fixed;
                 top: 0;
-                left: -250px;
+                left: -250px;     
                 background-color: gray;
                 padding-top: 60px;
                 transition: 0.3s ease;
@@ -140,23 +86,33 @@
                 padding: 20px;
                 margin-top: 60px;
             }
-
+            
             .text-border-bottom {
                 border-bottom: 2px solid;
             }
-
+            
             .text-border-top {
                 border-top: 2px solid;
             }
-
+            .my-box {
+                width: 80%;
+                height: auto;
+                min-height: 200px;
+                background-color: aliceblue;
+                border: 2px solid;
+                padding-left: 5%;
+                padding-right: 5%;
+                padding-bottom: 5%;
+                padding-top: 1%;
+                margin: 20px auto;
+                border-radius: 30px;
+                text-align: justify;
+            }
             .bold-text {
                 font-weight: bold;
             }
-            .add-top-pad {
-                padding-top: 10px;
-            }
 
-        </style>
+        </style>    
     </head>
 
     <body>
@@ -165,24 +121,26 @@
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-btn">&#9776;</label>
             <nav class="side-nav">
-                <a href="about.html" class="text-border-bottom text-border-top add-top-pad">About</a>
+                <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
+                <a href="about.html" class="text-border-bottom">About</a>
                 <a href="skills.html" class="text-border-bottom">Skills</a>
                 <a href="projects.html" class="text-border-bottom">Projects</a>
-                <a href="contact.html" class="text-border-bottom">Contact</a>
             </nav>
         </div>
-        <img src="Profile_Avatar.jpg" alt="Prince Jan A. Segovia" class="profile-pic">
-        <h1>Prince Jan A. Segovia</h1>
-        <h2 class="center-text text-bottom-pad">Bachelor of Science in Computer Science 3</h2>
-
+        <h1 class="center-text">CONTACT:<br>Prince Jan Segovia</h1>
     </header>
-    <div class="my-box">
-        <h3 class="bold-text center-text">ABOUT MYSELF</h3>
-        <hr>
-        <p class="big-text text-top-pad">Hello Everyone! I am Prince Jan A. Segovia. I am a third year, Bachelor of Science in Infortmation Technology. I like making webpages for fun, i find the structure of HTML the easiest to follow, instead of something like Java or Python.</p>
-    </div>
 
-    <footer>
+    <div class="my-box">
+        <h3 class="bold-text center-text">CONTACTS</h3>
+        <hr>
+        <div>
+           <p class="big-text">EMAIL: 20180013941@my.xu.edu.ph</p>
+           <p class="big-text">FACEBOOK: Prince Jan Amandac Segovia </p>
+           <p class="big-text">GITHUB: princejanSegovia</p>
+           <p class="big-text">NUMBER: +63 55 927 2178</p>
+        </div>
+    </div>
+     <footer>
         <hr>
         <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
     </footer>
