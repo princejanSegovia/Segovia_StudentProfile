@@ -12,7 +12,7 @@ On Tablet:
 <img width="520" height="957" alt="image" src="https://github.com/user-attachments/assets/f8ab6aa4-6a4b-4129-8e64-422a763075c5" />
 <img width="515" height="922" alt="image" src="https://github.com/user-attachments/assets/9a8ba43a-7a51-499f-8261-eafc665395f1" />
 <img width="515" height="928" alt="image" src="https://github.com/user-attachments/assets/76e54aa5-18e9-4d8f-b425-4bdab3614434" />
-
+Text is blurry because it is zoomed out to view full scale.
 
 On PC:
 <img width="1917" height="1018" alt="image" src="https://github.com/user-attachments/assets/52b89454-8138-4c90-aa41-ada89bbd97f8" />
