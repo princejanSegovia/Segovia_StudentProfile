@@ -1,139 +1,46 @@
-<DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Segovia About</title>
-        <style>
-            header {
-                background-color: #D3D3D3;
-                width: 100%;
-                height: auto;
-                border-radius: 15px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-             .big-text {
-                font-size: 22px;
-            }
-
-            .text-top-pad {
-                padding-top: 5%;
-            }
-
-            .text-bottom-pad {
-                padding-bottom: 5%;
-            }
-
-            .center-text {
-                text-align: center;
-            }
-
-            .align-left {
-                align: left;
-            }
-
-            #menu-toggle {
-                display: none;
-            }
-
-            .menu-btn {
-                font-size: 30px;
-                color: #333;
-                 cursor: pointer;
-                padding: 15px;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                z-index: 100;
-                user-select: none;
-            }
-
-            .side-nav {
-                 height: 100%;
-                width: 250px;
-                position: fixed;
-                top: 0;
-                left: -250px;     
-                background-color: gray;
-                padding-top: 60px;
-                transition: 0.3s ease;
-                z-index: 99;
-            }
-
-            #menu-toggle:checked ~ .side-nav {
-                left: 0;
-            }
-
-            .side-nav a {
-                padding: 15px 25px;
-                text-decoration: none;
-                font-size: 20px;
-                color: black;
-                display: block;
-                transition: 0.2s;
-                text-align: center;
-            }
-
-            .side-nav a:hover {
-                color: #f1f1f1;
-                background-color: #222;
-            }
-
-            .content {
-                padding: 20px;
-                margin-top: 60px;
-            }
-            
-            .text-border-bottom {
-                border-bottom: 2px solid;
-            }
-            
-            .text-border-top {
-                border-top: 2px solid;
-            }
-            .my-box {
-                width: 80%;
-                height: auto;
-                min-height: 200px;
-                background-color: aliceblue;
-                border: 2px solid;
-                padding-left: 5%;
-                padding-right: 5%;
-                padding-bottom: 5%;
-                padding-top: 1%;
-                margin: 20px auto;
-                border-radius: 30px;
-                text-align: justify;
-            }
-
-        </style>    
-    </head>
-
-    <body>
-    <header>
-        <div class="aling-left">
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-btn">&#9776;</label>
-            <nav class="side-nav">
-                <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
-                <a href="skills.html" class="text-border-bottom">Skills</a>
-                <a href="projects.html" class="text-border-bottom">Projects</a>
-                <a href="contact.html" class="text-border-bottom">Contact</a>
-            </nav>
-        </div>
-        <h1 class="center-text">ABOUT:<br>Prince Jan Segovia</h1>
-    </header>
-
-    <div class="my-box">
-        <p class="big-text">Hello! I am Prince Jan Amandac Segovia, I am a 3rd year I.T. student, I like making webpages. Although not as a hobby, it can be considered as one of my skills, albeit with assistance from google since I dont remember well. I have a great time when dealing with things that are physical in nature, such as handling tasks that are tangible, because I learn better when I see something.<br><br>I like vehicles, motorcycles in particular. My favourite would be the Yamaha R1M. I am also very interested in attending classes or taking a course for auto repair probably after college if things dont work out. I am now a 21 year old, 3rd year IT student in Xavier University, I came from a background of private schools, starting from HTMS, now known as AMS, then moved up to Xavier High School, then Liceo de Cagayan, then Finally here in Xavier University. I aspire to be a person with a comfortable life, have good work to support the family, and also a great IT personnel or mechanic.</p>
+<body>
+<header>
+    <div class="align-left">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">&#9776;</label>
+        <nav class="side-nav">
+            <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
+            <a href="skills.html" class="text-border-bottom">Skills</a>
+            <a href="projects.html" class="text-border-bottom">Projects</a>
+            <a href="contact.html" class="text-border-bottom">Contact</a>
+            <button id="edit-about-btn" class="edit-menu-btn">Edit About</button>
+        </nav>
     </div>
-     <footer>
-        <hr>
-        <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
-    </footer>
-    </body>
-    </html>
-</DOCTYPE>
+    <h1 class="center-text">ABOUT:<br>Prince Jan Segovia</h1>
+</header>
+
+<div class="my-box">
+    <p class="big-text" id="about-text">Hello! I am Prince Jan Amandac Segovia, I am a 3rd year I.T. student, I like making webpages. Although not as a hobby, it can be considered as one of my skills, albeit with assistance from google since I dont remember well. I have a great time when dealing with things that are physical in nature, such as handling tasks that are tangible, because I learn better when I see something.<br><br>I like vehicles, motorcycles in particular. My favourite would be the Yamaha R1M. I am also very interested in attending classes or taking a course for auto repair probably after college if things dont work out. I am now a 21 year old, 3rd year IT student in Xavier University, I came from a background of private schools, starting from HTMS, now known as AMS, then moved up to Xavier High School, then Liceo de Cagayan, then Finally here in Xavier University. I aspire to be a person with a comfortable life, have good work to support the family, and also a great IT personnel or mechanic.</p>
+</div>
+<form id="edit-about-panel" class="edit-panel">
+    <h3 class="bold-text center-text">EDIT ABOUT</h3>
+    <hr>
+
+    <label for="edit-about">About Myself</label>
+    <textarea id="edit-about" rows="12" required></textarea>
+
+    <div class="edit-buttons">
+        <button id="save-about">SAVE</button>
+        <button id="cancel-about">CANCEL</button>
+    </div>
+</form>
+<footer>
+    <hr>
+    <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,191 +1,59 @@
-<DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
 
-    <html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Segovia Profile</title>
-        <style>
-            header {
-                background-color: #D3D3D3;
-                width: 100%;
-                height: auto;
-                border-radius: 15px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-            }
+<body>
+<header>
+    <div class="align-left">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">&#9776;</label>
+        <nav class="side-nav">
+            <a href="about.html" class="text-border-bottom text-border-top add-top-pad">About</a>
+            <a href="skills.html" class="text-border-bottom">Skills</a>
+            <a href="projects.html" class="text-border-bottom">Projects</a>
+            <a href="contact.html" class="text-border-bottom">Contact</a>
+            <button id="edit-profile-btn" class="edit-menu-btn"> Edit Profile</button>
+        </nav>
+    </div>
+    <img src="Profile_Avatar.jpg" alt="Prince Jan A. Segovia" class="profile-pic">
+    <h1 id="profile-name">Prince Jan A. Segovia</h1>
+    <h2 class="center-text text-bottom-pad" id="profile-degree">Bachelor of Science in Computer Science 3</h2>
 
-            h1 {
-                font-size: 36px;
-                color: #333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                margin-bottom: 5px;
-                font-weight: bold;
-                padding-top: 10px;
-            }
+</header>
+<div class="my-box">
+    <h3 class="bold-text center-text">ABOUT MYSELF</h3>
+    <hr>
+    <p id="profile-description" class="big-text text-top-pad">Hello Everyone! I am Prince Jan A. Segovia. I am a third year, Bachelor of Science in Infortmation Technology. I like making webpages for fun, i find the structure of HTML the easiest to follow, instead of something like Java or Python.</p>
+</div>
 
-            h2 {
-                font-size: 30px;
-                color: #333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                font-weight: bold;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
+<form id="edit-panel" class="edit-panel">
+    <h3 class="bold-text center-text">EDIT PROFILE</h3>
+    <hr>
 
-            h3 {
-                font-size: 30px;
-                color: #333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                font-weight: bold;
-            }
+    <label for="edit-name">Name:</label>
+    <input type="text" id="edit-name" required>
 
-            .my-box {
-                width: 80%;
-                height: auto;
-                min-height: 200px;
-                background-color: aliceblue;
-                border: 2px solid;
-                padding-left: 5%;
-                padding-right: 5%;
-                padding-bottom: 5%;
-                padding-top: 1%;
-                margin: 20px auto;
-                border-radius: 30px;
-                text-align: justify;
-            }
+    <label for="edit-degree">Degree:</label>
+    <input type="text" id ="edit-degree" required>
 
-            .big-text {
-                font-size: 22px;
-            }
+    <label for="edit-description">About Myself</label>
+    <textarea id="edit-description" rows="8" required></textarea>
 
-            .text-top-pad {
-                padding-top: 5%;
-            }
-
-            .text-bottom-pad {
-                padding-bottom: 5%;
-            }
-
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin-bottom: 15px;
-                border: 3px solid white;
-            }
-
-            .center-text {
-                text-align: center;
-            }
-
-            .align-left {
-                align: left;
-            }
-
-            #menu-toggle {
-                display: none;
-            }
-
-            .menu-btn {
-                font-size: 30px;
-                color: #333;
-                 cursor: pointer;
-                padding: 15px;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                z-index: 100;
-                user-select: none;
-            }
-
-            .side-nav {
-                 height: 100%;
-                width: 250px;
-                position: fixed;
-                top: 0;
-                left: -250px;
-                background-color: gray;
-                padding-top: 60px;
-                transition: 0.3s ease;
-                z-index: 99;
-            }
-
-            #menu-toggle:checked ~ .side-nav {
-                left: 0;
-            }
-
-            .side-nav a {
-                padding: 15px 25px;
-                text-decoration: none;
-                font-size: 20px;
-                color: black;
-                display: block;
-                transition: 0.2s;
-                text-align: center;
-            }
-
-            .side-nav a:hover {
-                color: #f1f1f1;
-                background-color: #222;
-            }
-
-            .content {
-                padding: 20px;
-                margin-top: 60px;
-            }
-
-            .text-border-bottom {
-                border-bottom: 2px solid;
-            }
-
-            .text-border-top {
-                border-top: 2px solid;
-            }
-
-            .bold-text {
-                font-weight: bold;
-            }
-            .add-top-pad {
-                padding-top: 10px;
-            }
-
-        </style>
-    </head>
-
-    <body>
-    <header>
-        <div class="aling-left">
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-btn">&#9776;</label>
-            <nav class="side-nav">
-                <a href="about.html" class="text-border-bottom text-border-top add-top-pad">About</a>
-                <a href="skills.html" class="text-border-bottom">Skills</a>
-                <a href="projects.html" class="text-border-bottom">Projects</a>
-                <a href="contact.html" class="text-border-bottom">Contact</a>
-            </nav>
-        </div>
-        <img src="Profile_Avatar.jpg" alt="Prince Jan A. Segovia" class="profile-pic">
-        <h1>Prince Jan A. Segovia</h1>
-        <h2 class="center-text text-bottom-pad">Bachelor of Science in Computer Science 3</h2>
-
-    </header>
-    <div class="my-box">
-        <h3 class="bold-text center-text">ABOUT MYSELF</h3>
-        <hr>
-        <p class="big-text text-top-pad">Hello Everyone! I am Prince Jan A. Segovia. I am a third year, Bachelor of Science in Infortmation Technology. I like making webpages for fun, i find the structure of HTML the easiest to follow, instead of something like Java or Python.</p>
+    <div class="edit-buttons">
+        <button id="save-profile">SAVE</button>
+        <button id="cancel-profile">CANCEL</button>
     </div>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
-    </footer>
-    </body>
-    </html>
-</DOCTYPE>
+</form>
+<footer>
+    <hr>
+    <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

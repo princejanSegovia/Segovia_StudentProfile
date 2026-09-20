@@ -1,152 +1,69 @@
-<DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Segovia Skills</title>
-        <style>
-            header {
-                background-color: #D3D3D3;
-                width: 100%;
-                height: auto;
-                border-radius: 15px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Skills</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-             .big-text {
-                font-size: 22px;
-            }
-
-            .text-top-pad {
-                padding-top: 5%;
-            }
-
-            .text-bottom-pad {
-                padding-bottom: 5%;
-            }
-
-            .center-text {
-                text-align: center;
-            }
-
-            .align-left {
-                align: left;
-            }
-
-            #menu-toggle {
-                display: none;
-            }
-
-            .menu-btn {
-                font-size: 30px;
-                color: #333;
-                 cursor: pointer;
-                padding: 15px;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                z-index: 100;
-                user-select: none;
-            }
-
-            .side-nav {
-                 height: 100%;
-                width: 250px;
-                position: fixed;
-                top: 0;
-                left: -250px;     
-                background-color: gray;
-                padding-top: 60px;
-                transition: 0.3s ease;
-                z-index: 99;
-            }
-
-            #menu-toggle:checked ~ .side-nav {
-                left: 0;
-            }
-
-            .side-nav a {
-                padding: 15px 25px;
-                text-decoration: none;
-                font-size: 20px;
-                color: black;
-                display: block;
-                transition: 0.2s;
-                text-align: center;
-            }
-
-            .side-nav a:hover {
-                color: #f1f1f1;
-                background-color: #222;
-            }
-
-            .content {
-                padding: 20px;
-                margin-top: 60px;
-            }
-            
-            .text-border-bottom {
-                border-bottom: 2px solid;
-            }
-            
-            .text-border-top {
-                border-top: 2px solid;
-            }
-            .my-box {
-                width: 80%;
-                height: auto;
-                min-height: 200px;
-                background-color: aliceblue;
-                border: 2px solid;
-                padding-left: 5%;
-                padding-right: 5%;
-                padding-bottom: 5%;
-                padding-top: 1%;
-                margin: 20px auto;
-                border-radius: 30px;
-                text-align: justify;
-            }
-            .bold-text {
-                font-weight: bold;
-            }
-
-        </style>    
-    </head>
-
-    <body>
-    <header>
-        <div class="aling-left">
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-btn">&#9776;</label>
-            <nav class="side-nav">
-                <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
-                <a href="about.html" class="text-border-bottom">About</a>
-                <a href="projects.html" class="text-border-bottom">Projects</a>
-                <a href="contact.html" class="text-border-bottom">Contact</a>
-            </nav>
-        </div>
-        <h1 class="center-text">SKILLS OF:<br>Prince Jan Segovia</h1>
-    </header>
-
-    <div class="my-box">
-        <h3 class="bold-text center-text">SKILLS</h3>
-        <hr>
-        <div>
-            <ul class="big-text">
-                <li>Web Development</li>
-                <li>Java</li>
-                <li>OOP</li>
-                <li>Database Management</li>
-                <li>Writing</li>
-            </ul>
-        </div>
+<body>
+<header>
+    <div class="align-left">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">&#9776;</label>
+        <nav class="side-nav">
+            <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
+            <a href="about.html" class="text-border-bottom">About</a>
+            <a href="projects.html" class="text-border-bottom">Projects</a>
+            <a href="contact.html" class="text-border-bottom">Contact</a>
+            <button id="edit-skills-btn" class="edit-menu-btn">Edit Skills</button>
+        </nav>
     </div>
-     <footer>
-        <hr>
-        <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
-    </footer>
-    </body>
-    </html>
-</DOCTYPE>
+    <h1 class="center-text">SKILLS OF:<br>Prince Jan Segovia</h1>
+</header>
+
+<div class="my-box">
+    <h3 class="bold-text center-text">SKILLS</h3>
+    <hr>
+    <div>
+        <ul class="big-text" id="skills-list">
+            <li id="skill-1">Web Development</li>
+            <li id="skill-2">Java</li>
+            <li id="skill-3">OOP</li>
+            <li id="skill-4">Database Management</li>
+            <li id="skill-5">Writing</li>
+        </ul>
+    </div>
+</div>
+<form id="edit-skills-panel" class="edit-panel">
+    <h3 class="bold-text center-text">EDIT SKILLS</h3>
+    <hr>
+
+    <label for="edit-skill-1">Skill 1:</label>
+    <input type="text" id="edit-skill-1" required>
+
+    <label for="edit-skill-2">Skill 2:</label>
+    <input type="text" id="edit-skill-2" required>
+
+    <label for="edit-skill-3">Skill 3:</label>
+    <input type="text" id="edit-skill-3" required>
+
+    <label for="edit-skill-4">Skill 4:</label>
+    <input type="text" id="edit-skill-4" required>
+
+    <label for="edit-skill-5">Skill 5:</label>
+    <input type="text" id="edit-skill-5" required>
+
+    <div class="edit-buttons">
+        <button id="save-skills">SAVE</button>
+        <button id="cancel-skills">CANCEL</button>
+    </div>
+
+</form>
+<footer>
+    <hr>
+    <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
