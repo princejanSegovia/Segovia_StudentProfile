@@ -1,153 +1,80 @@
-<DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Segovia Projects</title>
-        <style>
-            header {
-                background-color: #D3D3D3;
-                width: 100%;
-                height: auto;
-                border-radius: 15px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-             .big-text {
-                font-size: 22px;
-            }
-
-            .text-top-pad {
-                padding-top: 5%;
-            }
-
-            .text-bottom-pad {
-                padding-bottom: 5%;
-            }
-
-            .center-text {
-                text-align: center;
-            }
-
-            .align-left {
-                align: left;
-            }
-
-            #menu-toggle {
-                display: none;
-            }
-
-            .menu-btn {
-                font-size: 30px;
-                color: #333;
-                 cursor: pointer;
-                padding: 15px;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                z-index: 100;
-                user-select: none;
-            }
-
-            .side-nav {
-                 height: 100%;
-                width: 250px;
-                position: fixed;
-                top: 0;
-                left: -250px;     
-                background-color: gray;
-                padding-top: 60px;
-                transition: 0.3s ease;
-                z-index: 99;
-            }
-
-            #menu-toggle:checked ~ .side-nav {
-                left: 0;
-            }
-
-            .side-nav a {
-                padding: 15px 25px;
-                text-decoration: none;
-                font-size: 20px;
-                color: black;
-                display: block;
-                transition: 0.2s;
-                text-align: center;
-            }
-
-            .side-nav a:hover {
-                color: #f1f1f1;
-                background-color: #222;
-            }
-
-            .content {
-                padding: 20px;
-                margin-top: 60px;
-            }
-            
-            .text-border-bottom {
-                border-bottom: 2px solid;
-            }
-            
-            .text-border-top {
-                border-top: 2px solid;
-            }
-            .my-box {
-                width: 80%;
-                height: auto;
-                min-height: 200px;
-                background-color: aliceblue;
-                border: 2px solid;
-                padding-left: 5%;
-                padding-right: 5%;
-                padding-bottom: 5%;
-                padding-top: 1%;
-                margin: 20px auto;
-                border-radius: 30px;
-                text-align: justify;
-            }
-            .bold-text {
-                font-weight: bold;
-            }
-
-        </style>    
-    </head>
-
-    <body>
-    <header>
-        <div class="aling-left">
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-btn">&#9776;</label>
-            <nav class="side-nav">
-                <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
-                <a href="about.html" class="text-border-bottom">About</a>
-                <a href="skills.html" class="text-border-bottom">Skills</a>
-                <a href="contact.html" class="text-border-bottom">Contact</a>
-            </nav>
-        </div>
-        <h1 class="center-text">PROJECTS WITH:<br>Prince Jan Segovia</h1>
-    </header>
-
-    <div class="my-box">
-        <h3 class="bold-text center-text">PROJECTS</h3>
-        <hr>
-        <div>
-            <ul>
-                <li class="big-text">Hotel Booking System</li>
-                    <p> - I was one of the designers for the UI and documenter of the project.</p>
-                <li class="big-text">Very Basic Student Grading System</li>
-                    <p> - I was a creator of a student enrollment system back in Basic Java in 1st year.</p>
-                <li class="big-text">"Company" Designeer</li>
-                    <p> - I am currently one of the lead designers for a 'company' we are creating for our E-commerce subject.</p>
-            </ul>
-        </div>
+<body>
+<header>
+    <div class="align-left">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">&#9776;</label>
+        <nav class="side-nav">
+            <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
+            <a href="about.html" class="text-border-bottom">About</a>
+            <a href="skills.html" class="text-border-bottom">Skills</a>
+            <a href="contact.html" class="text-border-bottom">Contact</a>
+            <button id="edit-projects-btn" class="edit-menu-btn">Edit Projects</button>
+        </nav>
     </div>
-     <footer>
-        <hr>
-        <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
-    </footer>
-    </body>
-    </html>
-</DOCTYPE>
+    <h1 class="center-text">PROJECTS WITH:<br>Prince Jan Segovia</h1>
+</header>
+
+<div class="my-box">
+    <h3 class="bold-text center-text">PROJECTS</h3>
+    <hr>
+    <div>
+        <dl>
+            <dt class="big-text" id="project-1">Hotel Booking System</dt>
+            <dd id="project-description-1" class="text-bottom-pad">
+                I was one of the designers for the UI and documenter of the project.
+            </dd>
+
+            <dt class="big-text" id="project-2">Very Basic Student Grading System</dt>
+            <dd id="project-description-2" class="text-bottom-pad">
+                I was a creator of a student enrollment system back in Basic Java in 1st year.
+            </dd>
+
+            <dt class="big-text" id="project-3">"Company" Designeer</dt>
+            <dd id="project-description-3" class="text-bottom-pad">
+                I am currently one of the lead designers for a "company" we are creating for our E-commerce subject.
+            </dd>
+        </dl>
+    </div>
+</div>
+<form id="edit-projects-panel" class="edit-panel">
+    <h3 class="bold-text center-text">EDIT PROJECTS</h3>
+    <hr>
+
+    <label for="edit-project-1">Project 1:</label>
+    <input type="text" id="edit-project-1" required>
+
+    <label for="edit-project-description-1">Description 1:</label>
+    <textarea id="edit-project-description-1" rows="4" required></textarea>
+
+    <label for="edit-project-2">Project 2:</label>
+    <input type="text" id="edit-project-2" required>
+
+    <label for="edit-project-description-2">Description 2:</label>
+    <textarea id="edit-project-description-2" rows="4" required></textarea>
+
+    <label for="edit-project-3">Project 3:</label>
+    <input type="text" id="edit-project-3" required>
+
+    <label for="edit-project-description-3">Description 3:</label>
+    <textarea id="edit-project-description-3" rows="4" required></textarea>
+
+    <div class="edit-buttons">
+        <button id="save-projects">SAVE</button>
+        <button id="cancel-projects">CANCEL</button>
+    </div>
+</form>
+<footer>
+    <hr>
+    <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
