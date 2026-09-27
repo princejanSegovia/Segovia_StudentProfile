@@ -1,113 +1,191 @@
-This is a small student profile application, using HTML for the structure and JavaScript for responsiveness, having a profile, About, Skills, Project, and Contact, pages. 
+1. Project Description
 
-Profile - The main or the entrance view of the application, where we can find a general summary, it contains the student information such as name, degree/year level, and a short about myself description. When you change the name here, you are also changing the names on the other pages.
+The Student Profile application is a Cordova-based mobile application that presents a student's personal and academic information in an organized and interactive profile. The application allows the user to view and edit profile information, manage skills and other details, and update the profile picture using the device camera.
 
-About - it is contains a more in-depth description about the student.
+The application uses HTML, CSS, and JavaScript for its interface and functionality. JavaScript and localStorage are used to save profile information, while Cordova provides access to device features such as the camera.
 
-Skills - This is where the user can input the skills of the users.
+2. Application Pages
+Profile
 
-Project - This is where the user can input what projects they have done or are doing.
+The Profile page serves as the main page of the application. It displays the student's profile picture, name, degree, and description. It also provides options for editing profile information and changing the profile picture.
 
-Contact - This is where the user can input their contact info.
+About
 
-JavaScript is used:
-* Form Handling - JavaScript opens and closes and edit forms and get the information entered by the user.
-* Validation - JavaScript checks that required fields are not empty and validates information such as the email address and contact number.
-* Profile Updates - When the user saves changes, JavaScript updates the profile information displayed on the page.
-* Save - The updated information is stored using localStorage, allowing the changes to remain after refreshing the page.
-* Cancel: The Cancel button closes the edit form without saving the changes.
+The About page provides additional information about the student. The information can be edited using the provided editing functionality.
 
-The application uses localStorage to save profile information directly in the browser/device.
+Skills
 
--  When the user clicks SAVE, JavaScript stores the updated information in localStorage.
-   The profile information is stored as data such as the name, degree, and description.
-   When the page is opened again, JavaScript retrieves the saved information from localStorage and displays it.
-   This allows the updated profile information to remain available even after refreshing or reopening the application.
+The Skills page displays the student's skills. The user can edit the listed skills through the edit functionality.
 
-The application uses CSS responsive design so that the layout can adjust to different screen sizes.
+Projects
 
-- Desktop: The page uses the available screen width while keeping the content organized and centered.
-- Tablet: The layout adjusts to the smaller screen width while maintaining readable text, spacing, and navigation.
-- Mobile: The design adapts to narrow screens, with the hamburger menu providing navigation and content adjusting to fit the screen.
-- The use of flexible widths, spacing, and responsive CSS allows the application to remain usable across different devices.
+The Projects page displays the student's projects and related descriptions.
 
-To build and run the application as a Cordova application:
+Contact
 
-1. Install Node.js and Cordova on the computer.
-2. Open Command Prompt or a terminal.
-3. Navigate to the project folder.
-4. Create or open the Cordova project.
-5. Place the HTML, CSS, JavaScript, and image files inside the project's www folder.
-6. Add the desired platform, such as Android:
+The Contact page provides the student's contact information. The information is presented in an organized format and includes validation when editing the fields.
 
-The Edit profile, I actually split it, so when you visit the different pages, it will have different and dedicated edits, so when you are in Skills page, it will have 'edit skills', in about, it will have 'edit about' and so on. For the profile edit, you will be able to edit the "Name, Degree and About Myself Text". In the About, you will be able to change the "About Myself" Text description. For the Skills, you will be able to change the different skills individually "Skills". For the Project, it is similar with the skills, you are able to change the projects and their description individually. And in contact, you are able to change the email, facebook, github and phone number, individually, where in email you are required to input a valid email, and for number, you are only able to input a number, and the '+' & '-'
+3. Profile Editing
 
-Screenshots:
+The application includes an Edit Profile function that allows the user to update their name, degree, and profile description.
 
-<img width="522" height="962" alt="image" src="https://github.com/user-attachments/assets/d5126a53-29ee-44a1-a919-eaac703afe16" />
+The user can select Edit Profile, enter new information, and select Save to update the profile. The Cancel option allows the user to leave the existing information unchanged.
 
-<img width="520" height="948" alt="image" src="https://github.com/user-attachments/assets/f9e64cb6-6930-4fa1-84aa-8e069dafe70e" />
+The application uses JavaScript localStorage to save profile information. This allows the updated information to remain available when the application is reopened.
 
-<img width="522" height="957" alt="image" src="https://github.com/user-attachments/assets/93f9ff87-fbd2-4f88-8a87-53add36e9c2a" />
+4. Camera Integration
 
-<img width="520" height="961" alt="image" src="https://github.com/user-attachments/assets/6e7f43f4-d6d0-4e7b-97f0-eba9b491a50e" />
+The application uses the Cordova Camera Plugin to allow the user to change their profile picture using the device camera.
 
-HIT CANCEL:
+The process is:
 
-<img width="1912" height="1018" alt="image" src="https://github.com/user-attachments/assets/2092d8e6-e814-44c2-a205-b954a7b00bd4" />
+Change Profile Picture → Open Camera → Capture Image → Update Profile Picture
 
-Did not input "EDIT 2"
+When the user selects Change Profile Picture, the application checks for camera permission. Once permission is available, the device camera is opened.
 
-<img width="522" height="968" alt="image" src="https://github.com/user-attachments/assets/67abada8-46a4-4c37-bd28-0cca4603c774" />
+After the user captures an image, the captured image is returned to the application and displayed as the new profile picture.
 
-<img width="530" height="971" alt="image" src="https://github.com/user-attachments/assets/421ecc75-0a30-4126-a020-45b55988e068" />
+The user can repeat the process to replace the existing profile picture with a new image.
 
-BLANK FEILD:
+5. Device Feature Integration
 
-<img width="1917" height="1011" alt="image" src="https://github.com/user-attachments/assets/d38fa72a-bb88-4824-b731-f48cfc31a993" />
+Cordova is used because it allows a web-based application using HTML, CSS, and JavaScript to access native device features.
 
-<img width="1917" height="1016" alt="image" src="https://github.com/user-attachments/assets/bbcbe69c-7e73-408f-b98e-0e29d3c43e43" />
+In this application, Cordova provides access to the device camera through the cordova-plugin-camera plugin. This allows the Student Profile application to use the camera while running as an Android application.
 
-BEFORE CLOSING: PERSISTENCE
+6. Image Handling
 
-<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/9c19daef-b89c-4efb-90fe-5f27860f506c" />
-AFTER:
+After an image is captured, the Camera Plugin returns the location of the captured image.
 
-<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/9d21f6ec-fd5d-47b3-8685-fca7f6b2139f" />
+The application uses the Cordova File API to access the captured image and display it in the profile.
 
-MULTIPLE UPDATES:
-EDIT 1:
+The image location is stored using localStorage under the profilePicture key. When the application starts again, the saved image location is retrieved and used to restore the profile picture.
 
-<img width="1916" height="1015" alt="image" src="https://github.com/user-attachments/assets/9c5685f2-6142-4d62-adc8-da6a6c378d34" />
+If a new image is captured, it replaces the previously displayed profile picture.
 
-SAVE:
+7. Error Handling
 
-<img width="1917" height="1015" alt="image" src="https://github.com/user-attachments/assets/73cbc759-0b69-4e9d-a3d8-1b614c12fff6" />
+The application includes error handling for different camera situations.
 
-EDIT 2:
+Camera Permission Denial
 
-<img width="1917" height="1011" alt="image" src="https://github.com/user-attachments/assets/ccdc72ea-aa9e-4cf8-9fc3-5505109c7211" />
+If the user denies camera permission, the application displays a message explaining that camera permission is required to change the profile picture.
 
-SAVE:
+Camera Cancellation
 
-<img width="1917" height="1011" alt="image" src="https://github.com/user-attachments/assets/6d0008a7-1bdd-4fc3-bd67-76f5c5e92a56" />
+If the user cancels the camera without capturing an image, the application keeps the existing profile picture and returns to the profile.
 
-EDIT 3:
+Camera Errors
 
-<img width="1916" height="1005" alt="image" src="https://github.com/user-attachments/assets/2116d7d9-2a8b-4977-96a6-4818f8249a12" />
+If an error occurs while accessing the camera or captured image, the application displays an error message instead of crashing.
 
-SAVE:
+8. Responsive Design
 
-<img width="1917" height="1018" alt="image" src="https://github.com/user-attachments/assets/317fad02-96f1-469b-b2ec-f97df95871be" />
+The application uses responsive HTML and CSS to support different screen sizes.
+
+Desktop
+
+The application can be viewed using a desktop browser or development environment with the interface adapting to the larger screen.
+
+Tablet
+
+The layout adjusts to tablet-sized screens while keeping the navigation, profile information, and buttons accessible.
+
+Mobile
+
+The application is designed for mobile devices, with a hamburger navigation menu and responsive profile layout suitable for smaller screens.
+
+The same application structure and stylesheet are used across the different screen sizes.
+
+9. How to Run
+Step 1: Install Node.js
+
+Install Node.js on the computer if it is not already installed.
+
+Step 2: Install Cordova
+
+Open a terminal and install Cordova:
+
+npm install -g cordova
+Step 3: Open the Project
+
+Navigate to the project folder:
+
+cd C:\Users\mrder\Documents\Segovia_Start
+Step 4: Install the Required Plugins
+
+Install the Camera Plugin:
+
+cordova plugin add cordova-plugin-camera
+
+Install the Android Permissions Plugin:
+
+cordova plugin add cordova-plugin-android-permissions
+
+Install the File Plugin:
+
+cordova plugin add cordova-plugin-file
+Step 5: Add the Android Platform
+
+If Android has not yet been added to the project:
+
+cordova platform add android
+Step 6: Prepare the Android Project
+cordova prepare android
+Step 7: Build the Application
+
+The Android project can be built using the Gradle wrapper:
+
+cd platforms\android
+.\gradlew.bat assembleDebug
+
+The generated APK can be found at:
+
+platforms\android\app\build\outputs\apk\debug\app-debug.apk
+Step 8: Run the Application
+
+The APK can be installed on an Android emulator or Android device.
+
+When the application is running, open the hamburger menu and select:
+
+Change Profile Picture
+
+Grant camera permission if requested, open the camera, capture an image, and return to the profile to view the updated picture.
+
+10. Application Screenshots
+
+The following screenshots demonstrate the main functionality of the Student Profile application.
+
+Student Profile
+
+<img width="497" height="932" alt="image" src="https://github.com/user-attachments/assets/6dac1621-0a50-4c0a-88f0-9b5424ca09e1" />
+
+Figure 1. Student Profile
+
+Change Profile Picture
+
+<img width="511" height="882" alt="image" src="https://github.com/user-attachments/assets/6f0379eb-95a9-4e93-a49d-330aea0587dc" />
 
 
+Figure 2. Change Profile Picture
+
+Camera
+
+<img width="515" height="922" alt="image" src="https://github.com/user-attachments/assets/1855ff1c-72a8-4d8f-a8f9-1ee76490bfc9" />
 
 
+Figure 3. Camera
+
+Captured Image
+
+<img width="520" height="920" alt="image" src="https://github.com/user-attachments/assets/07f87c38-2b05-4805-9b0e-d45774359213" />
 
 
+Figure 4. Captured Image
+
+Updated Profile Picture
+
+<img width="512" height="915" alt="image" src="https://github.com/user-attachments/assets/97c17988-3edf-42b4-b8d8-74e5300b05b8" />
 
 
-
-
-
-
+Figure 5. Updated Profile Picture
