@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Skills</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Skills</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
-<header>
-    <div class="align-left">
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn">&#9776;</label>
-        <nav class="side-nav">
-            <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
-            <a href="about.html" class="text-border-bottom">About</a>
-            <a href="projects.html" class="text-border-bottom">Projects</a>
-            <a href="contact.html" class="text-border-bottom">Contact</a>
-            <button id="edit-skills-btn" class="edit-menu-btn">Edit Skills</button>
-        </nav>
+    <body>
+    <header>
+        <div class="align-left">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn">&#9776;</label>
+            <nav class="side-nav">
+                <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
+                <a href="about.html" class="text-border-bottom">About</a>
+                <a href="projects.html" class="text-border-bottom">Projects</a>
+                <a href="contact.html" class="text-border-bottom">Contact</a>
+                <button id="edit-skills-btn" class="edit-menu-btn">Edit Skills</button>
+            </nav>
+        </div>
+        <h1 class="center-text">SKILLS OF:<br><span class="header-name">Prince Jan Segovia</span></h1>
+    </header>
+
+    <div class="my-box">
+        <h3 class="bold-text center-text">SKILLS</h3>
+        <hr>
+        <div>
+            <ul class="big-text" id="skills-list">
+                <li id="skill-1">Web Development</li>
+                <li id="skill-2">Java</li>
+                <li id="skill-3">OOP</li>
+                <li id="skill-4">Database Management</li>
+                <li id="skill-5">Writing</li>
+            </ul>
+        </div>
     </div>
-    <h1 class="center-text">SKILLS OF:<br><span class="header-name">Prince Jan Segovia</span></h1>
-</header>
+    <form id="edit-skills-panel" class="edit-panel">
+        <h3 class="bold-text center-text">EDIT SKILLS</h3>
+        <hr>
 
-<div class="my-box">
-    <h3 class="bold-text center-text">SKILLS</h3>
-    <hr>
-    <div>
-        <ul class="big-text" id="skills-list">
-            <li id="skill-1">Web Development</li>
-            <li id="skill-2">Java</li>
-            <li id="skill-3">OOP</li>
-            <li id="skill-4">Database Management</li>
-            <li id="skill-5">Writing</li>
-        </ul>
-    </div>
-</div>
-<form id="edit-skills-panel" class="edit-panel">
-    <h3 class="bold-text center-text">EDIT SKILLS</h3>
-    <hr>
+        <label for="edit-skill-1">Skill 1:</label>
+        <input type="text" id="edit-skill-1" required>
 
-    <label for="edit-skill-1">Skill 1:</label>
-    <input type="text" id="edit-skill-1" required>
+        <label for="edit-skill-2">Skill 2:</label>
+        <input type="text" id="edit-skill-2" required>
 
-    <label for="edit-skill-2">Skill 2:</label>
-    <input type="text" id="edit-skill-2" required>
+        <label for="edit-skill-3">Skill 3:</label>
+        <input type="text" id="edit-skill-3" required>
 
-    <label for="edit-skill-3">Skill 3:</label>
-    <input type="text" id="edit-skill-3" required>
+        <label for="edit-skill-4">Skill 4:</label>
+        <input type="text" id="edit-skill-4" required>
 
-    <label for="edit-skill-4">Skill 4:</label>
-    <input type="text" id="edit-skill-4" required>
+        <label for="edit-skill-5">Skill 5:</label>
+        <input type="text" id="edit-skill-5" required>
 
-    <label for="edit-skill-5">Skill 5:</label>
-    <input type="text" id="edit-skill-5" required>
+        <div class="edit-buttons">
+            <button id="save-skills">SAVE</button>
+            <button id="cancel-skills">CANCEL</button>
+        </div>
 
-    <div class="edit-buttons">
-        <button id="save-skills">SAVE</button>
-        <button id="cancel-skills">CANCEL</button>
-    </div>
-
-</form>
-<footer>
-    <hr>
-    <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
-</footer>
-<script src="script.js"></script>
-</body>
+    </form>
+     <footer>
+        <hr>
+        <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    </body>
 </html>

@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Projects</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Projects</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
-<header>
-    <div class="align-left">
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn">&#9776;</label>
-        <nav class="side-nav">
-            <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
-            <a href="about.html" class="text-border-bottom">About</a>
-            <a href="skills.html" class="text-border-bottom">Skills</a>
-            <a href="contact.html" class="text-border-bottom">Contact</a>
-            <button id="edit-projects-btn" class="edit-menu-btn">Edit Projects</button>
-        </nav>
+    <body>
+    <header>
+        <div class="align-left">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn">&#9776;</label>
+            <nav class="side-nav">
+                <a href="index.html" class="text-border-bottom text-border-top">Profile</a>
+                <a href="about.html" class="text-border-bottom">About</a>
+                <a href="skills.html" class="text-border-bottom">Skills</a>
+                <a href="contact.html" class="text-border-bottom">Contact</a>
+                <button id="edit-projects-btn" class="edit-menu-btn">Edit Projects</button>
+            </nav>
+        </div>
+        <h1 class="center-text">PROJECTS WITH:<br><span class="header-name">Prince Jan Segovia</span></h1>
+    </header>
+
+    <div class="my-box">
+        <h3 class="bold-text center-text">PROJECTS</h3>
+        <hr>
+        <div>
+            <dl>
+                <dt class="big-text" id="project-1">Hotel Booking System</dt>
+                <dd id="project-description-1" class="text-bottom-pad">
+                    I was one of the designers for the UI and documenter of the project.
+                </dd>
+
+                <dt class="big-text" id="project-2">Very Basic Student Grading System</dt>
+                <dd id="project-description-2" class="text-bottom-pad">
+                    I was a creator of a student enrollment system back in Basic Java in 1st year.
+                </dd>
+
+                <dt class="big-text" id="project-3">"Company" Designeer</dt>
+                <dd id="project-description-3" class="text-bottom-pad">
+                    I am currently one of the lead designers for a "company" we are creating for our E-commerce subject.
+                </dd>
+            </dl>
+        </div>
     </div>
-    <h1 class="center-text">PROJECTS WITH:<br><span class="header-name">Prince Jan Segovia</span></h1>
-</header>
+    <form id="edit-projects-panel" class="edit-panel">
+        <h3 class="bold-text center-text">EDIT PROJECTS</h3>
+        <hr>
 
-<div class="my-box">
-    <h3 class="bold-text center-text">PROJECTS</h3>
-    <hr>
-    <div>
-        <dl>
-            <dt class="big-text" id="project-1">Hotel Booking System</dt>
-            <dd id="project-description-1" class="text-bottom-pad">
-                I was one of the designers for the UI and documenter of the project.
-            </dd>
+        <label for="edit-project-1">Project 1:</label>
+        <input type="text" id="edit-project-1" required>
 
-            <dt class="big-text" id="project-2">Very Basic Student Grading System</dt>
-            <dd id="project-description-2" class="text-bottom-pad">
-                I was a creator of a student enrollment system back in Basic Java in 1st year.
-            </dd>
+        <label for="edit-project-description-1">Description 1:</label>
+        <textarea id="edit-project-description-1" rows="4" required></textarea>
 
-            <dt class="big-text" id="project-3">"Company" Designeer</dt>
-            <dd id="project-description-3" class="text-bottom-pad">
-                I am currently one of the lead designers for a "company" we are creating for our E-commerce subject.
-            </dd>
-        </dl>
-    </div>
-</div>
-<form id="edit-projects-panel" class="edit-panel">
-    <h3 class="bold-text center-text">EDIT PROJECTS</h3>
-    <hr>
+        <label for="edit-project-2">Project 2:</label>
+        <input type="text" id="edit-project-2" required>
 
-    <label for="edit-project-1">Project 1:</label>
-    <input type="text" id="edit-project-1" required>
+        <label for="edit-project-description-2">Description 2:</label>
+        <textarea id="edit-project-description-2" rows="4" required></textarea>
 
-    <label for="edit-project-description-1">Description 1:</label>
-    <textarea id="edit-project-description-1" rows="4" required></textarea>
+        <label for="edit-project-3">Project 3:</label>
+        <input type="text" id="edit-project-3" required>
 
-    <label for="edit-project-2">Project 2:</label>
-    <input type="text" id="edit-project-2" required>
+        <label for="edit-project-description-3">Description 3:</label>
+        <textarea id="edit-project-description-3" rows="4" required></textarea>
 
-    <label for="edit-project-description-2">Description 2:</label>
-    <textarea id="edit-project-description-2" rows="4" required></textarea>
-
-    <label for="edit-project-3">Project 3:</label>
-    <input type="text" id="edit-project-3" required>
-
-    <label for="edit-project-description-3">Description 3:</label>
-    <textarea id="edit-project-description-3" rows="4" required></textarea>
-
-    <div class="edit-buttons">
-        <button id="save-projects">SAVE</button>
-        <button id="cancel-projects">CANCEL</button>
-    </div>
-</form>
-<footer>
-    <hr>
-    <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
-</footer>
-<script src="script.js"></script>
-</body>
+        <div class="edit-buttons">
+            <button id="save-projects">SAVE</button>
+            <button id="cancel-projects">CANCEL</button>
+        </div>
+    </form>
+     <footer>
+        <hr>
+        <p>&copy; 2026 Prince Jan A. Segovia. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    </body>
 </html>
