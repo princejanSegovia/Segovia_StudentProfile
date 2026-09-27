@@ -1,35 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("deviceready", function () {
 
     const menuToggle =
         document.getElementById("menu-toggle");
-
-
-
-    const savedProfileForHeaders =
-        localStorage.getItem("profileData");
-
-    if (savedProfileForHeaders) {
-
-        const profileDataForHeaders =
-            JSON.parse(savedProfileForHeaders);
-
-        const headerNames =
-            document.querySelectorAll(".header-name");
-
-        headerNames.forEach(function (headerName) {
-
-            headerName.textContent =
-                profileDataForHeaders.name;
-        });
-    }
-
-
-
-    const editProfileButton =
-        document.getElementById("edit-profile-btn");
-
-    const editPanel =
-        document.getElementById("edit-panel");
 
     const profileName =
         document.getElementById("profile-name");
@@ -40,13 +12,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileDescription =
         document.getElementById("profile-description");
 
-    const nameInput =
+    const editProfileButton =
+        document.getElementById("edit-profile-btn");
+
+    const editPanel =
+        document.getElementById("edit-panel");
+
+    const editName =
         document.getElementById("edit-name");
 
-    const degreeInput =
+    const editDegree =
         document.getElementById("edit-degree");
 
-    const descriptionInput =
+    const editDescription =
         document.getElementById("edit-description");
 
     const saveProfileButton =
@@ -56,14 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("cancel-profile");
 
 
-
-    if (editPanel) {
-        editPanel.style.display = "none";
-    }
-
-
-
-    if (editProfileButton) {
+    function loadProfileData() {
 
         const savedProfile =
             localStorage.getItem("profileData");
@@ -73,151 +44,187 @@ document.addEventListener("DOMContentLoaded", function () {
             const profileData =
                 JSON.parse(savedProfile);
 
-            profileName.textContent =
-                profileData.name;
-
-            profileDegree.textContent =
-                profileData.degree;
-
-            profileDescription.textContent =
-                profileData.description;
-        }
-
-
-
-        editProfileButton.addEventListener("click", function () {
-
-            nameInput.value =
-                profileName.innerText;
-
-            degreeInput.value =
-                profileDegree.innerText;
-
-            descriptionInput.value =
-                profileDescription.innerText;
-
-            editPanel.style.display = "block";
-
-            if (menuToggle) {
-                menuToggle.checked = false;
+            if (profileName) {
+                profileName.textContent =
+                    profileData.name || "Prince Jan A. Segovia";
             }
 
-            editPanel.scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    }
-
-
-
-    if (saveProfileButton) {
-
-        saveProfileButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const updatedName =
-                nameInput.value.trim();
-
-            const updatedDegree =
-                degreeInput.value.trim();
-
-            const updatedDescription =
-                descriptionInput.value.trim();
-
-
-
-            if (updatedName === "") {
-
-                alert("Name cannot be empty.");
-
-                nameInput.focus();
-
-                return;
+            if (profileDegree) {
+                profileDegree.textContent =
+                    profileData.degree || "";
             }
 
-
-
-            if (updatedDegree === "") {
-
-                alert("Degree cannot be empty.");
-
-                degreeInput.focus();
-
-                return;
+            if (profileDescription) {
+                profileDescription.textContent =
+                    profileData.description || "";
             }
 
-
-
-            if (updatedDescription === "") {
-
-                alert("About Myself cannot be empty.");
-
-                descriptionInput.focus();
-
-                return;
+            if (editName) {
+                editName.value =
+                    profileData.name || "";
             }
 
+            if (editDegree) {
+                editDegree.value =
+                    profileData.degree || "";
+            }
 
+            if (editDescription) {
+                editDescription.value =
+                    profileData.description || "";
+            }
 
-            const profileData = {
-
-                name: updatedName,
-
-                degree: updatedDegree,
-
-                description: updatedDescription
-            };
-
-
-
-            localStorage.setItem(
-                "profileData",
-                JSON.stringify(profileData)
+            updateHeaderNames(
+                profileData.name || "Prince Jan A. Segovia"
             );
+        }
+    }
 
 
+    function updateHeaderNames(name) {
 
-            profileName.textContent =
-                updatedName;
+        const headerNames = [
+            "about-header-name",
+            "skills-header-name",
+            "projects-header-name",
+            "contact-header-name"
+        ];
 
-            profileDegree.textContent =
-                updatedDegree;
+        headerNames.forEach(function (id) {
 
-            profileDescription.textContent =
-                updatedDescription;
+            const element =
+                document.getElementById(id);
 
-
-
-            const headerNames =
-                document.querySelectorAll(".header-name");
-
-            headerNames.forEach(function (headerName) {
-
-                headerName.textContent =
-                    updatedName;
-            });
-
-
-
-            editPanel.style.display = "none";
-
-            alert("Profile updated successfully!");
+            if (element) {
+                element.textContent = name;
+            }
         });
     }
 
 
+    loadProfileData();
 
-    if (cancelProfileButton) {
 
-        cancelProfileButton.addEventListener("click", function (event) {
+    if (
+        editProfileButton &&
+        editPanel
+    ) {
 
-            event.preventDefault();
+        editProfileButton.addEventListener(
+            "click",
+            function (event) {
 
-            editPanel.style.display = "none";
-        });
+                event.preventDefault();
+
+                alert("Edit Profile button clicked.");
+
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                }
+
+                editPanel.style.display = "block";
+                editPanel.style.visibility = "visible";
+                editPanel.style.opacity = "1";
+            }
+        );
+
+
+    }
+    if (
+        cancelProfileButton &&
+        editPanel
+    ) {
+
+        cancelProfileButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                editPanel.style.display = "none";
+                editPanel.style.visibility = "hidden";
+                editPanel.style.opacity = "0";
+
+                loadProfileData();
+            }
+        );
     }
 
+
+    if (
+        saveProfileButton &&
+        editPanel
+    ) {
+
+        saveProfileButton.addEventListener(
+            "click",
+            function () {
+
+                const name =
+                    editName.value.trim();
+
+                const degree =
+                    editDegree.value.trim();
+
+                const description =
+                    editDescription.value.trim();
+
+
+                if (!name) {
+                    alert("Please enter your name.");
+                    return;
+                }
+
+                if (!degree) {
+                    alert("Please enter your degree.");
+                    return;
+                }
+
+                if (!description) {
+                    alert("Please enter your description.");
+                    return;
+                }
+
+
+                const profileData = {
+                    name: name,
+                    degree: degree,
+                    description: description
+                };
+
+
+                localStorage.setItem(
+                    "profileData",
+                    JSON.stringify(profileData)
+                );
+
+
+                if (profileName) {
+                    profileName.textContent = name;
+                }
+
+                if (profileDegree) {
+                    profileDegree.textContent = degree;
+                }
+
+                if (profileDescription) {
+                    profileDescription.textContent =
+                        description;
+                }
+
+
+                updateHeaderNames(name);
+
+
+                editPanel.style.display = "none";
+
+
+                alert(
+                    "Profile updated successfully!"
+                );
+            }
+        );
+    }
 
 
     const editSkillsButton =
@@ -226,36 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const editSkillsPanel =
         document.getElementById("edit-skills-panel");
 
-    const skill1 =
-        document.getElementById("skill-1");
-
-    const skill2 =
-        document.getElementById("skill-2");
-
-    const skill3 =
-        document.getElementById("skill-3");
-
-    const skill4 =
-        document.getElementById("skill-4");
-
-    const skill5 =
-        document.getElementById("skill-5");
-
-    const skill1Input =
-        document.getElementById("edit-skill-1");
-
-    const skill2Input =
-        document.getElementById("edit-skill-2");
-
-    const skill3Input =
-        document.getElementById("edit-skill-3");
-
-    const skill4Input =
-        document.getElementById("edit-skill-4");
-
-    const skill5Input =
-        document.getElementById("edit-skill-5");
-
     const saveSkillsButton =
         document.getElementById("save-skills");
 
@@ -263,207 +240,299 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("cancel-skills");
 
 
+    const skillElements = [
+        document.getElementById("skill-1"),
+        document.getElementById("skill-2"),
+        document.getElementById("skill-3"),
+        document.getElementById("skill-4"),
+        document.getElementById("skill-5")
+    ];
 
-    if (editSkillsPanel) {
-        editSkillsPanel.style.display = "none";
-    }
+
+    const skillInputs = [
+        document.getElementById("edit-skill-1"),
+        document.getElementById("edit-skill-2"),
+        document.getElementById("edit-skill-3"),
+        document.getElementById("edit-skill-4"),
+        document.getElementById("edit-skill-5")
+    ];
 
 
-
-    if (editSkillsButton) {
+    function loadSkillsData() {
 
         const savedSkills =
             localStorage.getItem("skillsData");
 
         if (savedSkills) {
 
-            const skillsData =
+            const skills =
                 JSON.parse(savedSkills);
 
-            skill1.textContent =
-                skillsData.skill1;
-
-            skill2.textContent =
-                skillsData.skill2;
-
-            skill3.textContent =
-                skillsData.skill3;
-
-            skill4.textContent =
-                skillsData.skill4;
-
-            skill5.textContent =
-                skillsData.skill5;
-        }
-
-
-
-        editSkillsButton.addEventListener("click", function () {
-
-            skill1Input.value =
-                skill1.innerText;
-
-            skill2Input.value =
-                skill2.innerText;
-
-            skill3Input.value =
-                skill3.innerText;
-
-            skill4Input.value =
-                skill4.innerText;
-
-            skill5Input.value =
-                skill5.innerText;
-
-            editSkillsPanel.style.display = "block";
-
-            if (menuToggle) {
-                menuToggle.checked = false;
-            }
-
-            editSkillsPanel.scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    }
-
-
-
-    if (saveSkillsButton) {
-
-        saveSkillsButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const updatedSkill1 =
-                skill1Input.value.trim();
-
-            const updatedSkill2 =
-                skill2Input.value.trim();
-
-            const updatedSkill3 =
-                skill3Input.value.trim();
-
-            const updatedSkill4 =
-                skill4Input.value.trim();
-
-            const updatedSkill5 =
-                skill5Input.value.trim();
-
-
-
-            if (updatedSkill1 === "") {
-
-                alert("Skill 1 cannot be empty.");
-
-                skill1Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedSkill2 === "") {
-
-                alert("Skill 2 cannot be empty.");
-
-                skill2Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedSkill3 === "") {
-
-                alert("Skill 3 cannot be empty.");
-
-                skill3Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedSkill4 === "") {
-
-                alert("Skill 4 cannot be empty.");
-
-                skill4Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedSkill5 === "") {
-
-                alert("Skill 5 cannot be empty.");
-
-                skill5Input.focus();
-
-                return;
-            }
-
-
-
-            const skillsData = {
-
-                skill1: updatedSkill1,
-
-                skill2: updatedSkill2,
-
-                skill3: updatedSkill3,
-
-                skill4: updatedSkill4,
-
-                skill5: updatedSkill5
-            };
-
-
-
-            localStorage.setItem(
-                "skillsData",
-                JSON.stringify(skillsData)
+            skillElements.forEach(
+                function (element, index) {
+
+                    if (element) {
+                        element.textContent =
+                            skills[index] || "";
+                    }
+                }
             );
 
 
+            skillInputs.forEach(
+                function (input, index) {
 
-            skill1.textContent =
-                updatedSkill1;
-
-            skill2.textContent =
-                updatedSkill2;
-
-            skill3.textContent =
-                updatedSkill3;
-
-            skill4.textContent =
-                updatedSkill4;
-
-            skill5.textContent =
-                updatedSkill5;
-
-
-
-            editSkillsPanel.style.display = "none";
-
-            alert("Skills updated successfully!");
-        });
+                    if (input) {
+                        input.value =
+                            skills[index] || "";
+                    }
+                }
+            );
+        }
     }
 
 
+    loadSkillsData();
 
-    if (cancelSkillsButton) {
 
-        cancelSkillsButton.addEventListener("click", function (event) {
+    if (
+        editSkillsButton &&
+        editSkillsPanel
+    ) {
 
-            event.preventDefault();
+        editSkillsButton.addEventListener(
+            "click",
+            function () {
 
-            editSkillsPanel.style.display = "none";
-        });
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                }
+
+                editSkillsPanel.style.display =
+                    "block";
+            }
+        );
     }
 
+
+    if (
+        cancelSkillsButton &&
+        editSkillsPanel
+    ) {
+
+        cancelSkillsButton.addEventListener(
+            "click",
+            function () {
+
+                editSkillsPanel.style.display =
+                    "none";
+
+                loadSkillsData();
+            }
+        );
+    }
+
+
+    if (
+        saveSkillsButton &&
+        editSkillsPanel
+    ) {
+
+        saveSkillsButton.addEventListener(
+            "click",
+            function () {
+
+                const skills = [];
+
+
+                for (
+                    let i = 0;
+                    i < skillInputs.length;
+                    i++
+                ) {
+
+                    if (!skillInputs[i]) {
+                        continue;
+                    }
+
+                    const value =
+                        skillInputs[i].value.trim();
+
+                    if (!value) {
+                        alert(
+                            "Please fill in all skill fields."
+                        );
+                        return;
+                    }
+
+                    skills.push(value);
+                }
+
+
+                localStorage.setItem(
+                    "skillsData",
+                    JSON.stringify(skills)
+                );
+
+
+                skillElements.forEach(
+                    function (element, index) {
+
+                        if (element) {
+                            element.textContent =
+                                skills[index] || "";
+                        }
+                    }
+                );
+
+
+                editSkillsPanel.style.display =
+                    "none";
+
+
+                alert(
+                    "Skills updated successfully!"
+                );
+            }
+        );
+    }
+
+
+    const editAboutButton =
+        document.getElementById("edit-about-btn");
+
+    const editAboutPanel =
+        document.getElementById("edit-about-panel");
+
+    const saveAboutButton =
+        document.getElementById("save-about");
+
+    const cancelAboutButton =
+        document.getElementById("cancel-about");
+
+
+    const aboutDescription =
+        document.getElementById("about-description");
+
+    const editAboutDescription =
+        document.getElementById("edit-about-description");
+    function loadAboutData() {
+
+        const savedAbout =
+            localStorage.getItem("aboutData");
+
+        if (savedAbout) {
+
+            const aboutData =
+                JSON.parse(savedAbout);
+
+            if (aboutDescription) {
+                aboutDescription.textContent =
+                    aboutData.description || "";
+            }
+
+            if (editAboutDescription) {
+                editAboutDescription.value =
+                    aboutData.description || "";
+            }
+        }
+    }
+
+
+    loadAboutData();
+
+
+    if (
+        editAboutButton &&
+        editAboutPanel
+    ) {
+
+        editAboutButton.addEventListener(
+            "click",
+            function () {
+
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                }
+
+                editAboutPanel.style.display =
+                    "block";
+            }
+        );
+    }
+
+
+    if (
+        cancelAboutButton &&
+        editAboutPanel
+    ) {
+
+        cancelAboutButton.addEventListener(
+            "click",
+            function () {
+
+                editAboutPanel.style.display =
+                    "none";
+
+                loadAboutData();
+            }
+        );
+    }
+
+
+    if (
+        saveAboutButton &&
+        editAboutPanel
+    ) {
+
+        saveAboutButton.addEventListener(
+            "click",
+            function () {
+
+                if (!editAboutDescription) {
+                    return;
+                }
+
+
+                const description =
+                    editAboutDescription.value.trim();
+
+
+                if (!description) {
+                    alert(
+                        "Please enter your About information."
+                    );
+                    return;
+                }
+
+
+                const aboutData = {
+                    description: description
+                };
+
+
+                localStorage.setItem(
+                    "aboutData",
+                    JSON.stringify(aboutData)
+                );
+
+
+                if (aboutDescription) {
+                    aboutDescription.textContent =
+                        description;
+                }
+
+
+                editAboutPanel.style.display =
+                    "none";
+
+
+                alert(
+                    "About information updated successfully!"
+                );
+            }
+        );
+    }
 
 
     const editContactButton =
@@ -472,30 +541,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const editContactPanel =
         document.getElementById("edit-contact-panel");
 
-    const contactEmail =
-        document.getElementById("contact-email");
-
-    const contactFacebook =
-        document.getElementById("contact-facebook");
-
-    const contactGithub =
-        document.getElementById("contact-github");
-
-    const contactNumber =
-        document.getElementById("contact-number");
-
-    const emailInput =
-        document.getElementById("edit-email");
-
-    const facebookInput =
-        document.getElementById("edit-facebook");
-
-    const githubInput =
-        document.getElementById("edit-github");
-
-    const numberInput =
-        document.getElementById("edit-number");
-
     const saveContactButton =
         document.getElementById("save-contact");
 
@@ -503,14 +548,27 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("cancel-contact");
 
 
+    const contactEmail =
+        document.getElementById("contact-email");
 
-    if (editContactPanel) {
-        editContactPanel.style.display = "none";
-    }
+    const contactPhone =
+        document.getElementById("contact-phone");
+
+    const contactAddress =
+        document.getElementById("contact-address");
 
 
+    const editContactEmail =
+        document.getElementById("edit-contact-email");
 
-    if (editContactButton) {
+    const editContactPhone =
+        document.getElementById("edit-contact-phone");
+
+    const editContactAddress =
+        document.getElementById("edit-contact-address");
+
+
+    function loadContactData() {
 
         const savedContact =
             localStorage.getItem("contactData");
@@ -520,187 +578,188 @@ document.addEventListener("DOMContentLoaded", function () {
             const contactData =
                 JSON.parse(savedContact);
 
-            contactEmail.textContent =
-                contactData.email;
 
-            contactFacebook.textContent =
-                contactData.facebook;
+            if (contactEmail) {
+                contactEmail.textContent =
+                    contactData.email || "";
+            }
 
-            contactGithub.textContent =
-                contactData.github;
+            if (contactPhone) {
+                contactPhone.textContent =
+                    contactData.phone || "";
+            }
 
-            contactNumber.textContent =
-                contactData.number;
+            if (contactAddress) {
+                contactAddress.textContent =
+                    contactData.address || "";
+            }
+
+
+            if (editContactEmail) {
+                editContactEmail.value =
+                    contactData.email || "";
+            }
+
+            if (editContactPhone) {
+                editContactPhone.value =
+                    contactData.phone || "";
+            }
+
+            if (editContactAddress) {
+                editContactAddress.value =
+                    contactData.address || "";
+            }
         }
-
-
-
-        editContactButton.addEventListener("click", function () {
-
-            emailInput.value =
-                contactEmail.innerText;
-
-            facebookInput.value =
-                contactFacebook.innerText;
-
-            githubInput.value =
-                contactGithub.innerText;
-
-            numberInput.value =
-                contactNumber.innerText;
-
-            editContactPanel.style.display = "block";
-
-            if (menuToggle) {
-                menuToggle.checked = false;
-            }
-
-            editContactPanel.scrollIntoView({
-                behavior: "smooth"
-            });
-        });
     }
 
 
-
-    if (saveContactButton) {
-
-        saveContactButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const updatedEmail =
-                emailInput.value.trim();
-
-            const updatedFacebook =
-                facebookInput.value.trim();
-
-            const updatedGithub =
-                githubInput.value.trim();
-
-            const updatedNumber =
-                numberInput.value.trim();
+    loadContactData();
 
 
+    if (
+        editContactButton &&
+        editContactPanel
+    ) {
 
-            if (updatedEmail === "") {
+        editContactButton.addEventListener(
+            "click",
+            function () {
 
-                alert("Email cannot be empty.");
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                }
 
-                emailInput.focus();
-
-                return;
+                editContactPanel.style.display =
+                    "block";
             }
-
-
-
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(updatedEmail)) {
-
-                alert("Please enter a valid email address.");
-
-                emailInput.focus();
-
-                return;
-            }
-
-
-
-            if (updatedFacebook === "") {
-
-                alert("Facebook cannot be empty.");
-
-                facebookInput.focus();
-
-                return;
-            }
-
-
-
-            if (updatedGithub === "") {
-
-                alert("GitHub cannot be empty.");
-
-                githubInput.focus();
-
-                return;
-            }
-
-
-
-            if (updatedNumber === "") {
-
-                alert("Number cannot be empty.");
-
-                numberInput.focus();
-
-                return;
-            }
-
-
-
-            if (!/^\+?[0-9\s-]+$/.test(updatedNumber)) {
-
-                alert("Number can only contain numbers, spaces, +, and -.");
-
-                numberInput.focus();
-
-                return;
-            }
-
-
-
-            const contactData = {
-
-                email: updatedEmail,
-
-                facebook: updatedFacebook,
-
-                github: updatedGithub,
-
-                number: updatedNumber
-            };
-
-
-
-            localStorage.setItem(
-                "contactData",
-                JSON.stringify(contactData)
-            );
-
-
-
-            contactEmail.textContent =
-                updatedEmail;
-
-            contactFacebook.textContent =
-                updatedFacebook;
-
-            contactGithub.textContent =
-                updatedGithub;
-
-            contactNumber.textContent =
-                updatedNumber;
-
-
-
-            editContactPanel.style.display = "none";
-
-            alert("Contact information updated successfully!");
-        });
+        );
     }
 
 
+    if (
+        cancelContactButton &&
+        editContactPanel
+    ) {
 
-    if (cancelContactButton) {
+        cancelContactButton.addEventListener(
+            "click",
+            function () {
 
-        cancelContactButton.addEventListener("click", function (event) {
+                editContactPanel.style.display =
+                    "none";
 
-            event.preventDefault();
-
-            editContactPanel.style.display = "none";
-        });
+                loadContactData();
+            }
+        );
     }
 
+
+    if (
+        saveContactButton &&
+        editContactPanel
+    ) {
+
+        saveContactButton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    !editContactEmail ||
+                    !editContactPhone ||
+                    !editContactAddress
+                ) {
+                    return;
+                }
+
+
+                const email =
+                    editContactEmail.value.trim();
+
+                const phone =
+                    editContactPhone.value.trim();
+
+                const address =
+                    editContactAddress.value.trim();
+
+
+                if (!email) {
+                    alert(
+                        "Please enter your email."
+                    );
+                    return;
+                }
+
+
+                if (!email.includes("@")) {
+                    alert(
+                        "Please enter a valid email address."
+                    );
+                    return;
+                }
+
+
+                if (!phone) {
+                    alert(
+                        "Please enter your phone number."
+                    );
+                    return;
+                }
+
+
+                if (!/^[0-9+\-\s()]+$/.test(phone)) {
+                    alert(
+                        "Phone number can only contain numbers and phone symbols."
+                    );
+                    return;
+                }
+
+
+                if (!address) {
+                    alert(
+                        "Please enter your address."
+                    );
+                    return;
+                }
+
+
+                const contactData = {
+                    email: email,
+                    phone: phone,
+                    address: address
+                };
+
+
+                localStorage.setItem(
+                    "contactData",
+                    JSON.stringify(contactData)
+                );
+
+
+                if (contactEmail) {
+                    contactEmail.textContent =
+                        email;
+                }
+
+                if (contactPhone) {
+                    contactPhone.textContent =
+                        phone;
+                }
+                if (contactAddress) {
+                    contactAddress.textContent =
+                        address;
+                }
+
+
+                editContactPanel.style.display =
+                    "none";
+
+
+                alert(
+                    "Contact information updated successfully!"
+                );
+            }
+        );
+    }
 
 
     const editProjectsButton =
@@ -709,42 +768,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const editProjectsPanel =
         document.getElementById("edit-projects-panel");
 
-    const project1 =
-        document.getElementById("project-1");
-
-    const project2 =
-        document.getElementById("project-2");
-
-    const project3 =
-        document.getElementById("project-3");
-
-    const projectDescription1 =
-        document.getElementById("project-description-1");
-
-    const projectDescription2 =
-        document.getElementById("project-description-2");
-
-    const projectDescription3 =
-        document.getElementById("project-description-3");
-
-    const project1Input =
-        document.getElementById("edit-project-1");
-
-    const project2Input =
-        document.getElementById("edit-project-2");
-
-    const project3Input =
-        document.getElementById("edit-project-3");
-
-    const projectDescription1Input =
-        document.getElementById("edit-project-description-1");
-
-    const projectDescription2Input =
-        document.getElementById("edit-project-description-2");
-
-    const projectDescription3Input =
-        document.getElementById("edit-project-description-3");
-
     const saveProjectsButton =
         document.getElementById("save-projects");
 
@@ -752,14 +775,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("cancel-projects");
 
 
+    const projectDescription =
+        document.getElementById("project-description");
 
-    if (editProjectsPanel) {
-        editProjectsPanel.style.display = "none";
-    }
+    const editProjectDescription =
+        document.getElementById("edit-project-description");
 
 
-
-    if (editProjectsButton) {
+    function loadProjectsData() {
 
         const savedProjects =
             localStorage.getItem("projectsData");
@@ -769,325 +792,306 @@ document.addEventListener("DOMContentLoaded", function () {
             const projectsData =
                 JSON.parse(savedProjects);
 
-            project1.textContent =
-                projectsData.project1;
+            if (projectDescription) {
+                projectDescription.textContent =
+                    projectsData.description || "";
+            }
 
-            project2.textContent =
-                projectsData.project2;
+            if (editProjectDescription) {
+                editProjectDescription.value =
+                    projectsData.description || "";
+            }
+        }
+    }
 
-            project3.textContent =
-                projectsData.project3;
 
-            projectDescription1.textContent =
-                projectsData.description1;
+    loadProjectsData();
 
-            projectDescription2.textContent =
-                projectsData.description2;
 
-            projectDescription3.textContent =
-                projectsData.description3;
+    if (
+        editProjectsButton &&
+        editProjectsPanel
+    ) {
+
+        editProjectsButton.addEventListener(
+            "click",
+            function () {
+
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                }
+
+                editProjectsPanel.style.display =
+                    "block";
+            }
+        );
+    }
+
+
+    if (
+        cancelProjectsButton &&
+        editProjectsPanel
+    ) {
+
+        cancelProjectsButton.addEventListener(
+            "click",
+            function () {
+
+                editProjectsPanel.style.display =
+                    "none";
+
+                loadProjectsData();
+            }
+        );
+    }
+
+
+    if (
+        saveProjectsButton &&
+        editProjectsPanel
+    ) {
+
+        saveProjectsButton.addEventListener(
+            "click",
+            function () {
+
+                if (!editProjectDescription) {
+                    return;
+                }
+
+
+                const description =
+                    editProjectDescription.value.trim();
+
+
+                if (!description) {
+                    alert(
+                        "Please enter your project description."
+                    );
+                    return;
+                }
+
+
+                const projectsData = {
+                    description: description
+                };
+
+
+                localStorage.setItem(
+                    "projectsData",
+                    JSON.stringify(projectsData)
+                );
+
+
+                if (projectDescription) {
+                    projectDescription.textContent =
+                        description;
+                }
+
+
+                editProjectsPanel.style.display =
+                    "none";
+
+
+                alert(
+                    "Project information updated successfully!"
+                );
+            }
+        );
+    }
+
+
+    const changeProfilePictureButton =
+        document.getElementById(
+            "edit-profile-picture-btn"
+        );
+
+    const profileImage =
+        document.getElementById("profile-image");
+
+
+        function openCamera() {
+            if (!navigator.camera) {
+                alert("Camera is not available.");
+                return;
+            }
+
+            navigator.camera.getPicture(
+                function (imageData) {
+                    if (!imageData) {
+                        alert("No image was captured.");
+                        return;
+                    }
+
+                    window.resolveLocalFileSystemURL(
+                        imageData,
+                        function (fileEntry) {
+                            profileImage.src = fileEntry.toURL();
+
+                            localStorage.setItem(
+                                "profilePicture",
+                                fileEntry.toURL()
+                            );
+
+                            alert("Profile picture updated successfully!");
+                        },
+                        function () {
+                            alert(
+                                "Unable to access the captured picture."
+                            );
+                        }
+                    );
+                },
+                function (error) {
+                    if (!error) {
+                        return;
+                    }
+
+                    const errorMessage =
+                        String(error).toLowerCase();
+
+                    if (
+                        errorMessage.includes("cancel") ||
+                        errorMessage.includes("no image selected")
+                    ) {
+                        return;
+                    }
+
+                    alert(
+                        "Unable to access the camera. Please check your device permissions."
+                    );
+                },
+                {
+                    quality: 30,
+                    destinationType:
+                        Camera.DestinationType.FILE_URI,
+                    sourceType:
+                        Camera.PictureSourceType.CAMERA,
+                    encodingType:
+                        Camera.EncodingType.JPEG,
+                    mediaType:
+                        Camera.MediaType.PICTURE,
+                    targetWidth: 600,
+                    targetHeight: 600,
+                    correctOrientation: true
+                }
+            );
         }
 
 
-
-        editProjectsButton.addEventListener("click", function () {
-
-            project1Input.value =
-                project1.innerText;
-
-            project2Input.value =
-                project2.innerText;
-
-            project3Input.value =
-                project3.innerText;
-
-            projectDescription1Input.value =
-                projectDescription1.innerText;
-
-            projectDescription2Input.value =
-                projectDescription2.innerText;
-
-            projectDescription3Input.value =
-                projectDescription3.innerText;
-
-            editProjectsPanel.style.display = "block";
-
-            if (menuToggle) {
-                menuToggle.checked = false;
-            }
-
-            editProjectsPanel.scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    }
-
-
-
-    if (saveProjectsButton) {
-
-        saveProjectsButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const updatedProject1 =
-                project1Input.value.trim();
-
-            const updatedProject2 =
-                project2Input.value.trim();
-
-            const updatedProject3 =
-                project3Input.value.trim();
-
-            const updatedDescription1 =
-                projectDescription1Input.value.trim();
-
-            const updatedDescription2 =
-                projectDescription2Input.value.trim();
-
-            const updatedDescription3 =
-                projectDescription3Input.value.trim();
-
-
-
-            if (updatedProject1 === "") {
-
-                alert("Project 1 cannot be empty.");
-
-                project1Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedDescription1 === "") {
-
-                alert("Project 1 description cannot be empty.");
-
-                projectDescription1Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedProject2 === "") {
-
-                alert("Project 2 cannot be empty.");
-
-                project2Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedDescription2 === "") {
-
-                alert("Project 2 description cannot be empty.");
-
-                projectDescription2Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedProject3 === "") {
-
-                alert("Project 3 cannot be empty.");
-
-                project3Input.focus();
-
-                return;
-            }
-
-
-
-            if (updatedDescription3 === "") {
-
-                alert("Project 3 description cannot be empty.");
-
-                projectDescription3Input.focus();
-
-                return;
-            }
-
-
-
-            const projectsData = {
-
-                project1: updatedProject1,
-
-                project2: updatedProject2,
-
-                project3: updatedProject3,
-
-                description1: updatedDescription1,
-
-                description2: updatedDescription2,
-
-                description3: updatedDescription3
-            };
-
-
-
-            localStorage.setItem(
-                "projectsData",
-                JSON.stringify(projectsData)
+    function requestCameraPermission() {
+
+        if (
+            !cordova ||
+            !cordova.plugins ||
+            !cordova.plugins.permissions
+        ) {
+
+            alert(
+                "Camera permission service is not available."
             );
 
-
-
-            project1.textContent =
-                updatedProject1;
-
-            project2.textContent =
-                updatedProject2;
-
-            project3.textContent =
-                updatedProject3;
-
-            projectDescription1.textContent =
-                updatedDescription1;
-
-            projectDescription2.textContent =
-                updatedDescription2;
-
-            projectDescription3.textContent =
-                updatedDescription3;
-
-
-
-            editProjectsPanel.style.display = "none";
-
-            alert("Projects updated successfully!");
-        });
-    }
-
-
-
-    if (cancelProjectsButton) {
-
-        cancelProjectsButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            editProjectsPanel.style.display = "none";
-        });
-    }
-
-
-
-    const editAboutButton =
-        document.getElementById("edit-about-btn");
-
-    const editAboutPanel =
-        document.getElementById("edit-about-panel");
-
-    const aboutText =
-        document.getElementById("about-text");
-
-    const aboutInput =
-        document.getElementById("edit-about");
-
-    const saveAboutButton =
-        document.getElementById("save-about");
-
-    const cancelAboutButton =
-        document.getElementById("cancel-about");
-
-
-
-    if (editAboutPanel) {
-        editAboutPanel.style.display = "none";
-    }
-
-
-
-    if (editAboutButton) {
-
-        const savedAbout =
-            localStorage.getItem("aboutData");
-
-        if (savedAbout) {
-
-            aboutText.textContent =
-                savedAbout;
+            return;
         }
 
 
+        const permissions =
+            cordova.plugins.permissions;
 
-        editAboutButton.addEventListener("click", function () {
 
-            aboutInput.value =
-                aboutText.innerText;
+        permissions.checkPermission(
 
-            editAboutPanel.style.display = "block";
+            permissions.CAMERA,
 
-            if (menuToggle) {
-                menuToggle.checked = false;
+            function (status) {
+
+                if (status.hasPermission) {
+
+                    openCamera();
+
+                } else {
+
+                    permissions.requestPermission(
+
+                        permissions.CAMERA,
+
+                        function (status) {
+
+                            if (
+                                status.hasPermission
+                            ) {
+
+                                openCamera();
+
+                            } else {
+
+                                alert(
+                                    "Camera permission was denied. The profile picture cannot be changed."
+                                );
+                            }
+                        },
+
+
+                        function () {
+
+                            alert(
+                                "Unable to request camera permission."
+                            );
+                        }
+                    );
+                }
+            },
+
+
+            function () {
+
+                alert(
+                    "Unable to check camera permission."
+                );
             }
-
-            editAboutPanel.scrollIntoView({
-                behavior: "smooth"
-            });
-        });
+        );
     }
 
 
+    if (
+        changeProfilePictureButton &&
+        profileImage
+    ) {
 
-    if (saveAboutButton) {
-
-        saveAboutButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const updatedAbout =
-                aboutInput.value.trim();
-
-
-
-            if (updatedAbout === "") {
-
-                alert("About information cannot be empty.");
-
-                aboutInput.focus();
-
-                return;
-            }
-
-
-
-            localStorage.setItem(
-                "aboutData",
-                updatedAbout
+        const savedProfilePicture =
+            localStorage.getItem(
+                "profilePicture"
             );
 
 
+        if (savedProfilePicture) {
 
-            aboutText.textContent =
-                updatedAbout;
+            window.resolveLocalFileSystemURL(
+                savedProfilePicture,
+                function (fileEntry) {
+                    profileImage.src =
+                        fileEntry.toURL();
+                },
+                function () {
+                    localStorage.removeItem(
+                        "profilePicture"
+                    );
+                }
+            );
+        }
 
 
+        changeProfilePictureButton.addEventListener(
+            "click",
+            function () {
 
-            editAboutPanel.style.display = "none";
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                }
 
-            alert("About information updated successfully!");
-        });
-    }
-
-
-
-    if (cancelAboutButton) {
-
-        cancelAboutButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            editAboutPanel.style.display = "none";
-        });
+                requestCameraPermission();
+            }
+        );
     }
 
 });
