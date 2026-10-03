@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="my-box">
+        <h1 class="center-text">STUDENT PROFILE</h1>
+
+        <hr>
+
+        <h3 class="bold-text center-text">LOGIN</h3>
+
+        <form id="login-form">
+
+            <label for="login-identifier">Student ID or Email:</label>
+            <input type="text" id="login-identifier" required>
+
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+
+            <div class="edit-buttons">
+                <button type="submit" id="login-button">LOGIN</button>
+            </div>
+
+        </form>
+
+        <p id="login-message" class="center-text"></p>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
